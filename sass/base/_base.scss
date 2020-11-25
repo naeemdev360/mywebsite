@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #d34354;
+  --secondary-color: #12cbc4;
+}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  color: rgb(236, 236, 236);
+}
+
+img {
+  width: 100%;
+}

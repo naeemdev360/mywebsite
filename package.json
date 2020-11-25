@@ -1,0 +1,16 @@
+{
+  "name": "mywebsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "node:sass": "node-sass sass/main.scss build/css/main.css -w",
+    "parcel":"parcel watch ./js/index.js --out-dir ./build/js --out-file bundler.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^5.0.0"
+  }
+}
