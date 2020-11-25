@@ -4,6 +4,12 @@
   height: 2rem;
   // color: #ddd;
 }
+.menu-icon__icon {
+  fill: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><linearGradient id='grad'><stop offset='0%' stop-color='%23ff00cc'/><stop offset='100%' stop-color='%23333399'/></linearGradient></svg>#grad")
+    purple;
+  width: 3.5rem;
+  height: 3.5rem;
+}
 .btn {
   padding: 1rem 3rem;
   border: 0;

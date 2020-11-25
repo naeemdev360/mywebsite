@@ -14,7 +14,7 @@
   <body>
     <div id="paralex"></div>
     <div class="container">
-      <section class="container__left">
+      <div class="container__left">
         <div class="avater">
           <img src="images/avater.jpg" alt="avater" />
         </div>
@@ -22,6 +22,78 @@
           <h2 class="identity__name">Naeem Hasan</h2>
           <h5 class="identity__profession">Web developer</h5>
         </div>
+        <ul class="main-menu">
+          <li class="main-menu__item">
+            <a href="#" class="main-menu__link">
+              <span class="menu-icon">
+                <svg class="menu-icon__icon">
+                  <use
+                    xlink:href="icons/Mycollection-SVG-sprite.svg#home"
+                  ></use>
+                </svg>
+              </span>
+              <span class="menu-text">Home</span>
+            </a>
+          </li>
+          <li class="main-menu__item">
+            <a href="#" class="main-menu__link">
+              <span class="menu-icon">
+                <svg class="menu-icon__icon">
+                  <use xlink:href="icons/Mycollection-SVG-sprite.svg#man"></use>
+                </svg>
+              </span>
+              <span class="menu-text">About</span>
+            </a>
+          </li>
+          <li class="main-menu__item">
+            <a href="#" class="main-menu__link">
+              <span class="menu-icon">
+                <svg class="menu-icon__icon">
+                  <use
+                    xlink:href="icons/Mycollection-SVG-sprite.svg#graduation-head-cover"
+                  ></use>
+                </svg>
+              </span>
+              <span class="menu-text">Resume</span>
+            </a>
+          </li>
+          <li class="main-menu__item">
+            <a href="#" class="main-menu__link">
+              <span class="menu-icon">
+                <svg class="menu-icon__icon">
+                  <use
+                    xlink:href="icons/Mycollection-SVG-sprite.svg#suitcase"
+                  ></use>
+                </svg>
+              </span>
+              <span class="menu-text">Portfolio</span>
+            </a>
+          </li>
+          <li class="main-menu__item">
+            <a href="#" class="main-menu__link">
+              <span class="menu-icon">
+                <svg class="menu-icon__icon">
+                  <use
+                    xlink:href="icons/Mycollection-SVG-sprite.svg#address-book"
+                  ></use>
+                </svg>
+              </span>
+              <span class="menu-text">Blog</span>
+            </a>
+          </li>
+          <li class="main-menu__item">
+            <a href="#" class="main-menu__link">
+              <span class="menu-icon">
+                <svg class="menu-icon__icon">
+                  <use
+                    xlink:href="icons/Mycollection-SVG-sprite.svg#email"
+                  ></use>
+                </svg>
+              </span>
+              <span class="menu-text">Contact</span>
+            </a>
+          </li>
+        </ul>
         <ul class="social">
           <li class="social__item">
             <a href="#" class="social__link">
@@ -80,8 +152,14 @@
         <div class="footer">
           <p class="footer__text">&copy; 2020 All rights reserved.</p>
         </div>
-      </section>
-      <section class="container__right"></section>
+      </div>
+      <div class="container__right">
+        <section id="home">Home</section>
+        <section id="about">about</section>
+        <section id="resume">resume</section>
+        <section id="blog">blog</section>
+        <section id="contact">contact</section>
+      </div>
     </div>
     <script src="js/bundler.js"></script>
   </body>
