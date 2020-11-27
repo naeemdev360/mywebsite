@@ -30,7 +30,7 @@
       margin-bottom: 1rem;
       &__name {
         margin-bottom: 0.3rem;
-        font-size: 4rem;
+        font-size: 3rem;
         text-transform: capitalize;
       }
       &__profession {
@@ -54,18 +54,46 @@
       margin: 0;
       padding: 0;
       top: 0;
-      padding: 2rem;
+      padding: 2rem 0;
       background-color: #353b48;
       &__item:not(:last-child) {
         margin-bottom: 2rem;
       }
       &__link {
+        padding: 0 2rem;
+        position: relative;
         text-decoration: none;
         color: #dddddd;
         display: flex;
         align-items: center;
+        justify-content: center;
         .menu-text {
-          display: none;
+          position: absolute;
+          background-color: var(--primary-color);
+          padding: 0.5rem 1rem;
+          transition: 0.4s ease-out;
+          z-index: 100;
+          visibility: hidden;
+          opacity: 0;
+          right: 0;
+        }
+        &:hover {
+          .menu-icon {
+            .menu-icon__icon {
+              fill: var(--primary-color);
+            }
+          }
+          .menu-text {
+            opacity: 1;
+            visibility: visible;
+            right: 100%;
+          }
+        }
+      }
+
+      &__link--active {
+        .menu-icon__icon {
+          fill: var(--primary-color);
         }
       }
     }
@@ -112,16 +140,43 @@
     position: relative;
     flex: 0 0 65%;
     display: flex;
-    overflow: hidden;
     border-radius: 0 30px 30px 0;
     & > * {
-      // position: absolute;
-      // top: 0;
-      // left: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--section-bg);
       width: 100%;
       min-height: 100%;
+      height: 100%;
       padding: 4rem;
       border-radius: 30px;
+      transition: 0.4s ease-out;
+      visibility: hidden;
+      overflow: auto;
+      opacity: 0;
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        height: 80%;
+        margin-right: 3rem;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+        margin: 3rem 0;
+        margin-right: 3rem;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgb(151, 149, 149);
+        border-radius: 500px;
+        margin-right: 3rem;
+      }
+    }
+    & > .visible {
+      opacity: 1;
+      visibility: visible;
     }
   }
 }

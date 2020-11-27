@@ -126,21 +126,90 @@ Object.defineProperty(exports, "__esModule", {
 exports.paralex = void 0;
 
 var paralex = function paralex(e) {
-  console.log("Hi");
   var paralex = document.getElementById("paralex");
   paralex.style.backgroundPositionX = "".concat(e.pageX * 0.04 + 40, "%");
   paralex.style.backgroundPositionY = "".concat(e.pageY * 0.04 + 40, "%");
 };
 
 exports.paralex = paralex;
+},{}],"main-menu.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.mainMenu = void 0;
+
+var mainMenu = function mainMenu() {
+  var mainMenu = document.querySelector(".main-menu");
+  var links = document.querySelectorAll(".main-menu__link");
+  var sections = document.querySelectorAll(".section");
+
+  var menuClick = function menuClick(e) {
+    links.forEach(function (link) {
+      return link.classList.remove("main-menu__link--active");
+    });
+    var link = e.target.closest(".main-menu__link");
+    var id = link.getAttribute("href");
+    var section = document.querySelector(id);
+    sections.forEach(function (section) {
+      return section.classList.remove("visible");
+    });
+    section.classList.add("visible");
+    link.classList.add("main-menu__link--active");
+  };
+
+  mainMenu.addEventListener("click", menuClick);
+};
+
+exports.mainMenu = mainMenu;
+},{}],"testimonial.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.testimonial = void 0;
+
+var testimonial = function testimonial() {
+  $(document).ready(function () {
+    $(".owl-carousel").owlCarousel({
+      items: 2,
+      margin: 40,
+      // responsiveClass: true,
+      dots: false,
+      nav: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: true
+        },
+        600: {
+          items: 2,
+          nav: true
+        }
+      }
+    });
+  });
+};
+
+exports.testimonial = testimonial;
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _paralex = require("./paralex");
 
+var _mainMenu = require("./main-menu");
+
+var _testimonial = require("./testimonial");
+
 //paralex
-window.addEventListener("mousemove", _paralex.paralex);
-},{"./paralex":"paralex.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+window.addEventListener("mousemove", _paralex.paralex); //testimonial
+
+(0, _testimonial.testimonial)(); //main-menu
+
+(0, _mainMenu.mainMenu)();
+},{"./paralex":"paralex.js","./main-menu":"main-menu.js","./testimonial":"testimonial.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -168,7 +237,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50157" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58826" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

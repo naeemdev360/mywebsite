@@ -1,4 +1,23 @@
 #home {
-  background-color: rgb(60, 58, 63);
   flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // z-index: 6;
+
+  .home__content {
+    &-text {
+      text-align: center;
+      &--name {
+        font-size: 6rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+      &--title {
+        font-weight: 300;
+        letter-spacing: 1px;
+        color: rgb(177, 177, 177);
+      }
+    }
+  }
 }
