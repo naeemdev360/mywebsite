@@ -75,7 +75,7 @@
   -webkit-background-size: 6px 6px;
   -moz-background-size: 6px 6px;
   background-size: 6px 6px;
-  z-index: 0;
+  z-index: -1;
 }
 .secondary-heading {
   font-size: 2.5rem;
@@ -115,7 +115,7 @@
   -webkit-background-size: 6px 6px;
   -moz-background-size: 6px 6px;
   background-size: 6px 6px;
-  z-index: 0;
+  z-index: -1;
 }
 .tertiary-heading {
   font-size: 2rem;
@@ -160,7 +160,7 @@
   -webkit-background-size: 6px 6px;
   -moz-background-size: 6px 6px;
   background-size: 6px 6px;
-  z-index: 0;
+  z-index: -1;
 }
 .para {
   color: rgb(213, 213, 213);

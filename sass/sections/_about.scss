@@ -102,4 +102,104 @@
       }
     }
   }
+  .pricing {
+    display: flex;
+    justify-content: space-between;
+    .plan {
+      background-color: #353b48;
+      padding: 2rem;
+      flex: 48% 0 0;
+      border-radius: 1rem;
+      border: 2px solid #46474b8a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: 0.3s ease-out;
+      &:hover {
+        transform: translateY(-10px);
+      }
+      &__name {
+        font-size: 2rem;
+        font-weight: 300;
+        margin: 0;
+      }
+      &__price {
+        font-size: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        margin-top: 1.5rem;
+        font-weight: 300;
+        span {
+          margin-left: -5px;
+        }
+      }
+      &__icon {
+        width: 4.5rem;
+        height: 4.5rem;
+        fill: #dddddd;
+      }
+      &__date {
+        color: #dddddd8e;
+        margin-top: -1.6rem;
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+      }
+      &__list {
+        list-style: none;
+        margin: 0;
+        text-align: center;
+        padding: 0;
+        margin-top: 2rem;
+
+        &--item {
+          text-transform: capitalize;
+          border-bottom: 1px solid var(--primary-color);
+
+          &:not(:last-child) {
+            margin-bottom: 2rem;
+          }
+        }
+      }
+    }
+  }
+  .fun-fact {
+    display: flex;
+    justify-content: space-between;
+    .fact {
+      background-color: #353b48;
+      transition: 0.3s ease-out;
+      border-radius: 1rem;
+      border: 2px solid #46474b8a;
+      flex: 30% 0 0;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      &:hover {
+        transform: translateY(-10px);
+      }
+      &__icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        fill: var(--primary-color);
+      }
+      &__name {
+        margin: 1rem 0;
+        font-size: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+        color: rgb(238, 238, 238);
+      }
+      &__number {
+        margin: 1rem 0;
+        font-size: 2rem;
+        color: rgb(161, 161, 161);
+      }
+    }
+  }
 }

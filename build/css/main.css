@@ -81,7 +81,7 @@ img {
   -webkit-background-size: 6px 6px;
   -moz-background-size: 6px 6px;
   background-size: 6px 6px;
-  z-index: 0; }
+  z-index: -1; }
 
 .secondary-heading {
   font-size: 2.5rem;
@@ -103,7 +103,7 @@ img {
   -webkit-background-size: 6px 6px;
   -moz-background-size: 6px 6px;
   background-size: 6px 6px;
-  z-index: 0; }
+  z-index: -1; }
 
 .tertiary-heading {
   font-size: 2rem;
@@ -130,7 +130,7 @@ img {
   -webkit-background-size: 6px 6px;
   -moz-background-size: 6px 6px;
   background-size: 6px 6px;
-  z-index: 0; }
+  z-index: -1; }
 
 .para {
   color: #d5d5d5;
@@ -385,6 +385,89 @@ img {
         width: 3rem;
         height: 3rem;
         fill: var(--primary-color); }
+
+#about .pricing {
+  display: flex;
+  justify-content: space-between; }
+  #about .pricing .plan {
+    background-color: #353b48;
+    padding: 2rem;
+    flex: 48% 0 0;
+    border-radius: 1rem;
+    border: 2px solid #46474b8a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s ease-out; }
+    #about .pricing .plan:hover {
+      transform: translateY(-10px); }
+    #about .pricing .plan__name {
+      font-size: 2rem;
+      font-weight: 300;
+      margin: 0; }
+    #about .pricing .plan__price {
+      font-size: 5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      margin-top: 1.5rem;
+      font-weight: 300; }
+      #about .pricing .plan__price span {
+        margin-left: -5px; }
+    #about .pricing .plan__icon {
+      width: 4.5rem;
+      height: 4.5rem;
+      fill: #dddddd; }
+    #about .pricing .plan__date {
+      color: #dddddd8e;
+      margin-top: -1.6rem;
+      font-size: 1.4rem;
+      margin-bottom: 2rem; }
+    #about .pricing .plan__list {
+      list-style: none;
+      margin: 0;
+      text-align: center;
+      padding: 0;
+      margin-top: 2rem; }
+      #about .pricing .plan__list--item {
+        text-transform: capitalize;
+        border-bottom: 1px solid var(--primary-color); }
+        #about .pricing .plan__list--item:not(:last-child) {
+          margin-bottom: 2rem; }
+
+#about .fun-fact {
+  display: flex;
+  justify-content: space-between; }
+  #about .fun-fact .fact {
+    background-color: #353b48;
+    transition: 0.3s ease-out;
+    border-radius: 1rem;
+    border: 2px solid #46474b8a;
+    flex: 30% 0 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem; }
+    #about .fun-fact .fact:hover {
+      transform: translateY(-10px); }
+    #about .fun-fact .fact__icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      fill: var(--primary-color); }
+    #about .fun-fact .fact__name {
+      margin: 1rem 0;
+      font-size: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      color: #eeeeee; }
+    #about .fun-fact .fact__number {
+      margin: 1rem 0;
+      font-size: 2rem;
+      color: #a1a1a1; }
 
 .owl-nav {
   position: absolute;
