@@ -70,8 +70,8 @@ img {
 .main-heading::after {
   position: absolute;
   opacity: 0.45;
-  top: 25px;
-  left: 14.4rem;
+  top: 50%;
+  right: -20%;
   content: "";
   height: 30px;
   width: 50px;
@@ -92,8 +92,8 @@ img {
 .secondary-heading::after {
   position: absolute;
   opacity: 0.45;
-  top: 20px;
-  right: -10px;
+  top: 50%;
+  right: -12%;
   content: "";
   height: 20px;
   width: 30px;
@@ -468,6 +468,131 @@ img {
       margin: 1rem 0;
       font-size: 2rem;
       color: #a1a1a1; }
+
+#resume .resume__box {
+  display: flex;
+  justify-content: space-between; }
+  #resume .resume__box--left {
+    flex: 50% 0 0; }
+    #resume .resume__box--left .resume__container--out {
+      display: flex; }
+      #resume .resume__box--left .resume__container--out .resume__date {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        margin-right: 2rem;
+        font-size: 1.4rem;
+        color: #949494; }
+        #resume .resume__box--left .resume__container--out .resume__date div {
+          text-align: right; }
+        #resume .resume__box--left .resume__container--out .resume__date div:last-child {
+          margin-top: 13.5rem; }
+        #resume .resume__box--left .resume__container--out .resume__date--year {
+          font-weight: 700; }
+        #resume .resume__box--left .resume__container--out .resume__date--name {
+          font-size: 1.3rem; }
+      #resume .resume__box--left .resume__container--out .resume__content {
+        padding: 1rem 0;
+        border-left: 1px solid rgba(238, 238, 238, 0.301);
+        padding-left: 2rem; }
+        #resume .resume__box--left .resume__container--out .resume__content .tertiary-heading {
+          font-size: 1.6rem; }
+        #resume .resume__box--left .resume__container--out .resume__content div {
+          position: relative; }
+        #resume .resume__box--left .resume__container--out .resume__content div:before {
+          position: absolute;
+          content: "";
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+          left: -24px;
+          top: 10px;
+          box-shadow: 0px 0px 0 3px var(--primary-color), 0 0 10px 5px var(--primary-color);
+          background-color: #1e272e; }
+  #resume .resume__box--right {
+    flex: 45% 0 0; }
+    #resume .resume__box--right .skill {
+      margin-bottom: 4rem; }
+      #resume .resume__box--right .skill .secondary-heading {
+        margin-bottom: 1rem; }
+      #resume .resume__box--right .skill__name {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between; }
+        #resume .resume__box--right .skill__name--name {
+          text-transform: capitalize;
+          font-weight: 700;
+          font-size: 1.5rem; }
+        #resume .resume__box--right .skill__name--person {
+          font-size: 1.3rem;
+          font-weight: 300; }
+      #resume .resume__box--right .skill__bar--outer {
+        width: 100%;
+        padding: 2px;
+        border-radius: 1.5rem;
+        border: 1px solid var(--primary-color); }
+      #resume .resume__box--right .skill__bar--outer:not(:last-child) {
+        margin-bottom: 2rem; }
+      #resume .resume__box--right .skill__bar--inner {
+        width: 95%;
+        border-radius: 1.5rem;
+        background-color: var(--primary-color);
+        height: 5px; }
+      #resume .resume__box--right .skill .knowledge__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-top: 1rem; }
+        #resume .resume__box--right .skill .knowledge__list .knowledge__item {
+          display: inline-block;
+          padding: 0.5rem 1rem;
+          margin-bottom: 0.5rem;
+          border-radius: 0.5rem;
+          background-color: var(--primary-color);
+          font-size: 1.3rem;
+          text-transform: capitalize; }
+
+#resume .certificate__box {
+  display: flex;
+  justify-content: space-between; }
+  #resume .certificate__box .item {
+    transition: 0.3s ease-out;
+    border-radius: 1.5rem;
+    border: 1.5px solid #444444;
+    flex: 0 0 48%;
+    display: flex; }
+    #resume .certificate__box .item:hover {
+      transform: translateY(-1rem); }
+    #resume .certificate__box .item__image--box {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      flex: 40%;
+      position: relative; }
+      #resume .certificate__box .item__image--box::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 1.5rem;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 1; }
+    #resume .certificate__box .item__content {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem; }
+      #resume .certificate__box .item__content h5 {
+        margin: 0;
+        text-transform: capitalize;
+        font-size: 1.6rem; }
+      #resume .certificate__box .item__content--from {
+        color: #ffffff88;
+        font-size: 1.4rem; }
+      #resume .certificate__box .item__content--date {
+        color: #ffffff88;
+        font-size: 1.3rem; }
 
 .owl-nav {
   position: absolute;

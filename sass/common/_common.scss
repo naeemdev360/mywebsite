@@ -45,8 +45,8 @@
 .main-heading::after {
   position: absolute;
   opacity: 0.45;
-  top: 25px;
-  left: 14.4rem;
+  top: 50%;
+  right: -20%;
 
   content: "";
   height: 30px;
@@ -86,8 +86,8 @@
 .secondary-heading::after {
   position: absolute;
   opacity: 0.45;
-  top: 20px;
-  right: -10px;
+  top: 50%;
+  right: -12%;
   content: "";
   height: 20px;
   width: 30px;
