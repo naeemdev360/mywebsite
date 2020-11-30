@@ -10,7 +10,11 @@
   height: 3.5rem;
   transition: 0.4s ease-out;
 }
-
+.contact__icon {
+  width: 4rem;
+  height: 4rem;
+  fill: var(--primary-color);
+}
 .btn {
   padding: 1rem 3rem;
   border: 0;
@@ -165,4 +169,39 @@
 .para {
   color: rgb(213, 213, 213);
   font-size: 1.5rem;
+}
+
+//contact from
+
+.form__group {
+  position: relative;
+  width: 100%;
+  height: 75%;
+  &:not(:last-child) {
+    margin-bottom: 2.5rem;
+  }
+  label {
+    position: absolute;
+    font-size: 1.4rem;
+    color: #eeeeeeb7;
+    top: 5%;
+    transform: translateX(15%);
+    transition: 0.3s ease-out;
+    display: block;
+  }
+  .form__control {
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    border: 1px solid #eeeeeeb7;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: #eeeeeed8;
+    width: 100%;
+    display: block;
+    height: 100%;
+    font-size: 1.5rem;
+    outline: none;
+    transition: 0.3s ease-out;
+  }
 }

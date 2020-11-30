@@ -13,6 +13,13 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200&display=swap"
       rel="stylesheet"
     />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="vendor/css/owl.carousel.min.css" />
     <link rel="stylesheet" href="vendor/css/owl.theme.default.min.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -441,7 +448,7 @@
               </div>
             </div>
           </section>
-          <section id="resume" class="section visible">
+          <section id="resume" class="section">
             <h2 class="main-heading">Resume</h2>
             <div class="resume__box">
               <div class="resume__box--left">
@@ -615,9 +622,200 @@
               </div>
             </div>
           </section>
-          <section id="portfolio" class="section">portfolio</section>
-          <section id="blog" class="section">blog</section>
-          <section id="contact" class="section">contact</section>
+          <section id="portfolio" class="section">
+            <h2 class="main-heading">Resume</h2>
+            <ul class="sort__list">
+              <li class="sort__list--item active">All</li>
+              <li class="sort__list--item">Details</li>
+              <li class="sort__list--item">web desing</li>
+              <li class="sort__list--item">web development</li>
+              <li class="sort__list--item">Mockup design</li>
+            </ul>
+            <div class="portfolios">
+              <div class="portfolio folio-1">
+                <div class="portfolio__top"></div>
+                <div class="portfolio__img-box">
+                  <img
+                    class="portfolio__image"
+                    src="images/portfolio/portfolio-1__small.jpg"
+                    alt="web design"
+                    data-category="webDesign"
+                  />
+                </div>
+                <h4 class="portfolio__title">Portfolio one</h4>
+              </div>
+              <div class="portfolio folio-2">
+                <div class="portfolio__top"></div>
+                <div class="portfolio__img-box">
+                  <img
+                    class="portfolio__image"
+                    src="images/portfolio/portfolio-2__small.jpg"
+                    alt="web design"
+                    data-category="webDesign"
+                  />
+                </div>
+                <h4 class="portfolio__title">Portfolio two</h4>
+              </div>
+              <div class="portfolio folio-3">
+                <div class="portfolio__top"></div>
+                <div class="portfolio__img-box">
+                  <img
+                    class="portfolio__image"
+                    src="images/portfolio/portfolio-3__small.jpg"
+                    alt="web design"
+                    data-category="webDesign"
+                  />
+                </div>
+                <h4 class="portfolio__title">Portfolio three</h4>
+              </div>
+              <div class="portfolio folio-4">
+                <div class="portfolio__top"></div>
+                <div class="portfolio__img-box">
+                  <img
+                    class="portfolio__image"
+                    src="images/portfolio/portfolio-4__small.jpg"
+                    alt="web design"
+                    data-category="webDesign"
+                  />
+                </div>
+                <h4 class="portfolio__title">Portfolio four</h4>
+              </div>
+              <div class="portfolio folio-5">
+                <div class="portfolio__top"></div>
+                <div class="portfolio__img-box">
+                  <img
+                    class="portfolio__image"
+                    src="images/portfolio/portfolio-5__small.jpg"
+                    alt="web design"
+                    data-category="webDesign"
+                  />
+                </div>
+                <h4 class="portfolio__title">Portfolio five</h4>
+              </div>
+              <div class="portfolio folio-6">
+                <div class="portfolio__top"></div>
+                <div class="portfolio__img-box">
+                  <img
+                    class="portfolio__image"
+                    src="images/portfolio/portfolio-1__small.jpg"
+                    alt="web design"
+                    data-category="webDesign"
+                  />
+                </div>
+                <h4 class="portfolio__title">Portfolio six</h4>
+              </div>
+            </div>
+          </section>
+          <section id="blog" class="section">
+            <h2 class="main-heading">Blog</h2>
+            <div>
+              <h2 class="commingsoon">Comming Soon . . .</h2>
+            </div>
+          </section>
+          <section id="contact" class="section visible">
+            <h2 class="main-heading">Contact</h2>
+            <div class="contact__wrapper">
+              <ul class="personal__info">
+                <li class="personal__info--item">
+                  <span class="personal__info--icon">
+                    <svg class="contact__icon">
+                      <use
+                        xlink:href="icons/Mycollection-SVG-sprite.svg#maps-and-flags"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="personal__info--text">Dhaka</span>
+                </li>
+                <li class="personal__info--item">
+                  <span class="personal__info--icon">
+                    <svg class="contact__icon">
+                      <use
+                        xlink:href="icons/Mycollection-SVG-sprite.svg#phone"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="personal__info--text">+017785211</span>
+                </li>
+                <li class="personal__info--item">
+                  <span class="personal__info--icon">
+                    <svg class="contact__icon">
+                      <use
+                        xlink:href="icons/Mycollection-SVG-sprite.svg#email"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="personal__info--text">example@gmail.com</span>
+                </li>
+                <li class="personal__info--item">
+                  <span class="personal__info--icon">
+                    <svg class="contact__icon">
+                      <use
+                        xlink:href="icons/Mycollection-SVG-sprite.svg#checked"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="personal__info--text">Freelance availabel</span>
+                </li>
+              </ul>
+
+              <div class="contact__input">
+                <div class="map" id="map"></div>
+                <h3 class="secondary-heading">
+                  How Can I <span class="highlighted">Help You?</span>
+                </h3>
+                <form>
+                  <div class="contact__form">
+                    <div class="contact__form--left">
+                      <div class="form__group">
+                        <input
+                          class="form__control"
+                          id="name"
+                          type="text"
+                          name="name"
+                        />
+                        <label for="name">Full Name</label>
+                      </div>
+                      <div class="form__group">
+                        <input
+                          class="form__control"
+                          id="email"
+                          type="email"
+                          name="email"
+                        />
+                        <label for="email">Email Address</label>
+                      </div>
+                      <div class="form__group">
+                        <input
+                          class="form__control"
+                          id="subject"
+                          type="text"
+                          name="subject"
+                        />
+
+                        <label for="subject">Subject</label>
+                      </div>
+                    </div>
+                    <div class="contact__form--right">
+                      <div class="form__group">
+                        <textarea
+                          name="message"
+                          class="form__control"
+                          id="message"
+                          cols="30"
+                          rows="10"
+                        ></textarea>
+                        <label for="message"> Message </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn__ghost">
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>

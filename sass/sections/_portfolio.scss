@@ -1,0 +1,51 @@
+#portfolio {
+  .sort__list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    margin-bottom: 3rem;
+    display: flex;
+    &--item:not(:last-child) {
+      margin-right: 2rem;
+    }
+    &--item {
+      color: rgb(146, 146, 146);
+      cursor: pointer;
+      text-transform: capitalize;
+      transition: 0.4s ease-out;
+      &:hover,
+      &.active {
+        color: #dddddd;
+      }
+    }
+  }
+  .portfolios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .portfolio {
+      margin-bottom: 3rem;
+      flex: 0 0 32%;
+      cursor: pointer;
+      transition: 0.4s ease-out;
+      overflow: hidden;
+      height: 100%;
+      &__img-box {
+        overflow: hidden;
+        width: 100%;
+        height: 15rem;
+      }
+      img {
+        transition: 0.3s ease-out;
+      }
+      &:hover img {
+        transform: scale(1.1);
+      }
+      &__title {
+        margin: 0;
+        text-transform: capitalize;
+        margin-top: 1rem;
+      }
+    }
+  }
+}
