@@ -2,6 +2,9 @@
   .resume__box {
     display: flex;
     justify-content: space-between;
+    @media only screen and (max-width: 575px) {
+      flex-direction: column;
+    }
     &--left {
       flex: 50% 0 0;
       .resume__container {
@@ -87,10 +90,11 @@
           margin-bottom: 2rem;
         }
         &__bar--inner {
-          width: 95%;
+          width: 0;
           border-radius: 1.5rem;
           background-color: var(--primary-color);
           height: 5px;
+          transition: 1s ease-out;
         }
         .knowledge__list {
           list-style: none;
@@ -114,7 +118,15 @@
     &__box {
       display: flex;
       justify-content: space-between;
+      @media only screen and (max-width: 575px) {
+        flex-direction: column;
+      }
       .item {
+        @media only screen and (max-width: 575px) {
+          &:not(:last-child) {
+            margin-bottom: 2rem;
+          }
+        }
         &:hover {
           transform: translateY(-1rem);
         }

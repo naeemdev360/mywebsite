@@ -132,6 +132,36 @@ var paralex = function paralex(e) {
 };
 
 exports.paralex = paralex;
+},{}],"resume.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.skillWidth = void 0;
+
+var skillWidth = function skillWidth(isResume) {
+  var percentageBox = document.querySelectorAll(".skill__name--persentage");
+  var innerBar = document.querySelectorAll(".skill__bar--inner");
+  percentageBox.forEach(function (box) {
+    return box.textContent = 0 + "%";
+  });
+  innerBar.forEach(function (bar, index) {
+    if (isResume) {
+      var x = setInterval(function () {
+        percentageBox[index].textContent = +percentageBox[index].textContent.slice(0, -1) + 1 + "%";
+
+        if (Number(bar.dataset.level) === Number(percentageBox[index].textContent.slice(0, -1))) {
+          clearInterval(x);
+        }
+      }, 1000 / +bar.dataset.level);
+    }
+
+    bar.style.width = isResume ? "".concat(bar.dataset.level, "%") : "0%";
+  });
+};
+
+exports.skillWidth = skillWidth;
 },{}],"main-menu.js":[function(require,module,exports) {
 "use strict";
 
@@ -140,16 +170,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mainMenu = void 0;
 
+var _resume = require("./resume");
+
 var mainMenu = function mainMenu() {
   var mainMenu = document.querySelector(".main-menu");
   var links = document.querySelectorAll(".main-menu__link");
   var sections = document.querySelectorAll(".section");
+  var leftSection = document.querySelector(".container__left");
+  var toggleBtn = document.querySelector(".menu-toggle");
+  var navArrowContainer = document.querySelector(".arrows__nav");
 
   var menuClick = function menuClick(e) {
+    var link = e.target.closest(".main-menu__link");
+    if (!link) return;
+    if (link.classList.contains("main-menu__link--active")) return;
     links.forEach(function (link) {
       return link.classList.remove("main-menu__link--active");
     });
-    var link = e.target.closest(".main-menu__link");
     var id = link.getAttribute("href");
     var section = document.querySelector(id);
     sections.forEach(function (section) {
@@ -157,13 +194,63 @@ var mainMenu = function mainMenu() {
     });
     section.classList.add("visible");
     link.classList.add("main-menu__link--active");
+    (0, _resume.skillWidth)(id === "#resume");
+  };
+
+  var openLeftContainer = function openLeftContainer(e) {
+    e.currentTarget.classList.toggle("open");
+
+    if (e.currentTarget.classList.contains("open")) {
+      leftSection.classList.add("open");
+    } else {
+      leftSection.classList.remove("open");
+    }
+  };
+
+  var navArrowClick = function navArrowClick(e) {
+    if (e.target === navArrowContainer) {
+      return;
+    }
+
+    var direction = e.target.closest("div");
+    var currSection = document.querySelector("section.visible");
+    sections.forEach(function (section) {
+      return section.classList.remove("visible");
+    });
+    links.forEach(function (link) {
+      return link.classList.remove("main-menu__link--active");
+    });
+
+    if (direction.classList.contains("arrows__nav--right")) {
+      if (currSection.nextElementSibling) {
+        currSection.nextElementSibling.classList.add("visible");
+        document.querySelector("a[href='#".concat(currSection.id, "']")).closest("li").nextElementSibling.querySelector("a").classList.add("main-menu__link--active");
+      } else {
+        sections[0].classList.add("visible");
+        links[0].classList.add("main-menu__link--active");
+      }
+    } else if (direction.classList.contains("arrows__nav--left")) {
+      if (currSection.previousElementSibling) {
+        currSection.previousElementSibling.classList.add("visible");
+        document.querySelector("a[href='#".concat(currSection.id, "']")).closest("li").previousElementSibling.querySelector("a").classList.add("main-menu__link--active");
+      } else {
+        sections[sections.length - 1].classList.add("visible");
+        links[links.length - 1].classList.add("main-menu__link--active");
+      }
+    } else {
+      return;
+    }
+
+    (0, _resume.skillWidth)(document.querySelector("#resume.visible"));
   };
 
   mainMenu.addEventListener("click", menuClick);
+  toggleBtn.addEventListener("click", openLeftContainer);
+  navArrowContainer.addEventListener("click", navArrowClick);
 };
 
 exports.mainMenu = mainMenu;
-},{}],"testimonial.js":[function(require,module,exports) {
+},{"./resume":"resume.js"}],"testimonial.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -230,6 +317,43 @@ var contactForm = function contactForm() {
 };
 
 exports.contactForm = contactForm;
+},{}],"portfolio.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.sortable = void 0;
+var listItems = document.querySelectorAll(".sort__list--item");
+var portfolios = document.querySelectorAll(".portfolio");
+
+var listClicked = function listClicked(e) {
+  listItems.forEach(function (list) {
+    return list.classList.remove("active");
+  });
+  e.currentTarget.classList.add("active");
+  var category = e.currentTarget.dataset.category;
+  portfolios.forEach(function (p) {
+    if (category == "all") {
+      p.classList.remove("remove");
+      return;
+    }
+
+    if (p.dataset.category !== category) {
+      p.classList.add("remove");
+    } else {
+      p.classList.remove("remove");
+    }
+  });
+};
+
+var sortable = function sortable() {
+  listItems.forEach(function (list) {
+    list.addEventListener("click", listClicked);
+  });
+};
+
+exports.sortable = sortable;
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -241,6 +365,9 @@ var _testimonial = require("./testimonial");
 
 var _contactForm = require("./contactForm");
 
+var _portfolio = require("./portfolio");
+
+// import { skillWidth } from "./resume";
 //paralex
 window.addEventListener("mousemove", _paralex.paralex); //testimonial
 
@@ -248,8 +375,12 @@ window.addEventListener("mousemove", _paralex.paralex); //testimonial
 
 (0, _mainMenu.mainMenu)(); // contact from
 
-(0, _contactForm.contactForm)();
-},{"./paralex":"paralex.js","./main-menu":"main-menu.js","./testimonial":"testimonial.js","./contactForm":"contactForm.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(0, _contactForm.contactForm)(); //resume sction
+// skillWidth();
+//portfolio
+
+(0, _portfolio.sortable)();
+},{"./paralex":"paralex.js","./main-menu":"main-menu.js","./testimonial":"testimonial.js","./contactForm":"contactForm.js","./portfolio":"portfolio.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -277,7 +408,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54391" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50218" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

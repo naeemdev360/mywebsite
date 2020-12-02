@@ -27,7 +27,27 @@
   </head>
   <body>
     <div id="paralex"></div>
+
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <div class="page">
+      <div class="arrows__nav">
+        <div class="arrows__nav--right">
+          <svg class="arrows__nav--icon">
+            <use xlink:href="icons/Mycollection-SVG-sprite.svg#next"></use>
+          </svg>
+        </div>
+        <div class="arrows__nav--left">
+          <svg class="arrows__nav--icon">
+            <use
+              xlink:href="icons/Mycollection-SVG-sprite.svg#left-arrow"
+            ></use>
+          </svg>
+        </div>
+      </div>
       <div class="container">
         <div class="container__left">
           <div class="avater">
@@ -111,6 +131,7 @@
               </a>
             </li>
           </ul>
+
           <ul class="social">
             <li class="social__item">
               <a href="#" class="social__link">
@@ -171,7 +192,7 @@
           </div>
         </div>
         <div class="container__right">
-          <section id="home" class="section">
+          <section id="home" class="section visible">
             <div class="home__content">
               <h1 class="home__content-text">
                 <span class="home__content-text--name">Naeem Hasan</span>
@@ -531,31 +552,31 @@
                   </h3>
                   <div class="skill__name">
                     <span class="skill__name--name">JavaScript</span>
-                    <span class="skill__name--person">95%</span>
+                    <span class="skill__name--persentage">95%</span>
                   </div>
                   <div class="skill__bar--outer js">
-                    <div class="skill__bar--inner"></div>
+                    <div class="skill__bar--inner" data-level="95"></div>
                   </div>
                   <div class="skill__name">
                     <span class="skill__name--name">PHP</span>
-                    <span class="skill__name--person">95%</span>
+                    <span class="skill__name--persentage">60%</span>
                   </div>
                   <div class="skill__bar--outer php">
-                    <div class="skill__bar--inner"></div>
+                    <div class="skill__bar--inner" data-level="60"></div>
                   </div>
                   <div class="skill__name">
                     <span class="skill__name--name">HTML/CSS</span>
-                    <span class="skill__name--person">95%</span>
+                    <span class="skill__name--persentage">95%</span>
                   </div>
                   <div class="skill__bar--outer html-css">
-                    <div class="skill__bar--inner"></div>
+                    <div class="skill__bar--inner" data-level="95"></div>
                   </div>
                   <div class="skill__name">
                     <span class="skill__name--name">Perl</span>
-                    <span class="skill__name--person">95%</span>
+                    <span class="skill__name--persentage">5%</span>
                   </div>
                   <div class="skill__bar--outer perl">
-                    <div class="skill__bar--inner"></div>
+                    <div class="skill__bar--inner" data-level="5"></div>
                   </div>
                 </div>
                 <div class="skill">
@@ -564,24 +585,24 @@
                   </h3>
                   <div class="skill__name">
                     <span class="skill__name--name">Figma</span>
-                    <span class="skill__name--person">95%</span>
+                    <span class="skill__name--persentage">40%</span>
                   </div>
                   <div class="skill__bar--outer figma">
-                    <div class="skill__bar--inner"></div>
+                    <div class="skill__bar--inner" data-level="40"></div>
                   </div>
                   <div class="skill__name">
                     <span class="skill__name--name">Adobe XD</span>
-                    <span class="skill__name--person">98%</span>
+                    <span class="skill__name--persentage">40%</span>
                   </div>
                   <div class="skill__bar--outer xd">
-                    <div class="skill__bar--inner"></div>
+                    <div class="skill__bar--inner" data-level="40"></div>
                   </div>
                   <div class="skill__name">
                     <span class="skill__name--name">Photoshop</span>
-                    <span class="skill__name--person">95%</span>
+                    <span class="skill__name--persentage">30%</span>
                   </div>
                   <div class="skill__bar--outer photoshop">
-                    <div class="skill__bar--inner"></div>
+                    <div class="skill__bar--inner" data-level="30"></div>
                   </div>
                 </div>
                 <div class="skill">
@@ -623,83 +644,85 @@
             </div>
           </section>
           <section id="portfolio" class="section">
-            <h2 class="main-heading">Resume</h2>
+            <h2 class="main-heading">Portfolio</h2>
             <ul class="sort__list">
-              <li class="sort__list--item active">All</li>
-              <li class="sort__list--item">Details</li>
-              <li class="sort__list--item">web desing</li>
-              <li class="sort__list--item">web development</li>
-              <li class="sort__list--item">Mockup design</li>
+              <li class="sort__list--item active" data-category="all">All</li>
+              <li class="sort__list--item" data-category="webDesign">
+                Details
+              </li>
+              <li class="sort__list--item" data-category="webDesign">
+                web desing
+              </li>
+              <li class="sort__list--item" data-category="webDevelopment">
+                web development
+              </li>
+              <li class="sort__list--item" data-category="mockup">
+                Mockup design
+              </li>
             </ul>
             <div class="portfolios">
-              <div class="portfolio folio-1">
+              <div class="portfolio folio-1" data-category="webDesign">
                 <div class="portfolio__top"></div>
                 <div class="portfolio__img-box">
                   <img
                     class="portfolio__image"
                     src="images/portfolio/portfolio-1__small.jpg"
                     alt="web design"
-                    data-category="webDesign"
                   />
                 </div>
                 <h4 class="portfolio__title">Portfolio one</h4>
               </div>
-              <div class="portfolio folio-2">
+              <div class="portfolio folio-2" data-category="mockup">
                 <div class="portfolio__top"></div>
                 <div class="portfolio__img-box">
                   <img
                     class="portfolio__image"
                     src="images/portfolio/portfolio-2__small.jpg"
                     alt="web design"
-                    data-category="webDesign"
                   />
                 </div>
                 <h4 class="portfolio__title">Portfolio two</h4>
               </div>
-              <div class="portfolio folio-3">
+              <div class="portfolio folio-3" data-category="webDesign">
                 <div class="portfolio__top"></div>
                 <div class="portfolio__img-box">
                   <img
                     class="portfolio__image"
                     src="images/portfolio/portfolio-3__small.jpg"
                     alt="web design"
-                    data-category="webDesign"
                   />
                 </div>
                 <h4 class="portfolio__title">Portfolio three</h4>
               </div>
-              <div class="portfolio folio-4">
+              <div class="portfolio folio-4" data-category="webDevelopment">
                 <div class="portfolio__top"></div>
                 <div class="portfolio__img-box">
                   <img
                     class="portfolio__image"
                     src="images/portfolio/portfolio-4__small.jpg"
                     alt="web design"
-                    data-category="webDesign"
                   />
                 </div>
                 <h4 class="portfolio__title">Portfolio four</h4>
               </div>
-              <div class="portfolio folio-5">
+              <div class="portfolio folio-5" data-category="webDesign">
                 <div class="portfolio__top"></div>
                 <div class="portfolio__img-box">
                   <img
                     class="portfolio__image"
                     src="images/portfolio/portfolio-5__small.jpg"
                     alt="web design"
-                    data-category="webDesign"
                   />
                 </div>
                 <h4 class="portfolio__title">Portfolio five</h4>
               </div>
-              <div class="portfolio folio-6">
+              <div class="portfolio folio-6" data-category="mockup">
                 <div class="portfolio__top"></div>
                 <div class="portfolio__img-box">
                   <img
                     class="portfolio__image"
                     src="images/portfolio/portfolio-1__small.jpg"
                     alt="web design"
-                    data-category="webDesign"
                   />
                 </div>
                 <h4 class="portfolio__title">Portfolio six</h4>
@@ -712,7 +735,7 @@
               <h2 class="commingsoon">Comming Soon . . .</h2>
             </div>
           </section>
-          <section id="contact" class="section visible">
+          <section id="contact" class="section">
             <h2 class="main-heading">Contact</h2>
             <div class="contact__wrapper">
               <ul class="personal__info">

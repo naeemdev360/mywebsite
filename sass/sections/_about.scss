@@ -5,8 +5,14 @@
   .about__me {
     display: flex;
     justify-content: space-between;
+    @media only screen and (max-width: 575px) {
+      flex-direction: column;
+    }
     &--text {
       flex: 0 0 45%;
+      @media only screen and (max-width: 575px) {
+        margin-bottom: 3rem;
+      }
     }
     &--info {
       flex: 0 0 45%;
@@ -28,6 +34,9 @@
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
+    @media only screen and (max-width: 575px) {
+      flex-direction: column;
+    }
     & > div {
       flex: 50% 0 0;
       padding: 1rem;
@@ -105,6 +114,9 @@
   .pricing {
     display: flex;
     justify-content: space-between;
+    @media only screen and (max-width: 575px) {
+      flex-direction: column;
+    }
     .plan {
       background-color: #353b48;
       padding: 2rem;
@@ -115,6 +127,11 @@
       flex-direction: column;
       align-items: center;
       transition: 0.3s ease-out;
+      @media only screen and (max-width: 575px) {
+        &:first-child {
+          margin-bottom: 2rem;
+        }
+      }
       &:hover {
         transform: translateY(-10px);
       }
@@ -167,6 +184,9 @@
   .fun-fact {
     display: flex;
     justify-content: space-between;
+    @media only screen and (max-width: 575px) {
+      flex-direction: column;
+    }
     .fact {
       background-color: #353b48;
       transition: 0.3s ease-out;
@@ -178,6 +198,11 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem;
+      @media only screen and (max-width: 575px) {
+        &:not(:last-child) {
+          margin-bottom: 2rem;
+        }
+      }
       &:hover {
         transform: translateY(-10px);
       }

@@ -33,3 +33,123 @@ img {
 .highlighted {
   color: var(--primary-color);
 }
+
+// toggle munu icon
+.menu-toggle {
+  display: none;
+
+  @media only screen and (max-width: 1024px) {
+    display: block;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+    border-radius: 50%;
+    background-color: #12cbc4;
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    cursor: pointer;
+    span {
+      height: 3px;
+      width: 60%;
+      background-color: white;
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: 0.3s ease-out;
+    }
+    span:nth-of-type(2) {
+      margin: 1rem 0;
+    }
+    span:nth-of-type(1) {
+      margin-top: -1rem;
+    }
+
+    &.open {
+      span:nth-of-type(1) {
+        transform: rotate(-130deg) translateX(-4px) translateY(-2px);
+      }
+      span:nth-of-type(2) {
+        opacity: 0;
+      }
+      span:nth-of-type(3) {
+        transform: rotate(130deg);
+      }
+    }
+  }
+}
+
+/*=======
+ARROW NAVIGATION
+======*/
+.arrows__nav {
+  position: absolute;
+  padding: 10px 0;
+  width: 60px;
+  right: 4%;
+  background-color: var(--container-bg);
+  border-radius: 35px;
+  z-index: 40;
+  list-style: none;
+  bottom: 11%;
+  -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.15);
+  @media only screen and (max-width: 1024px) {
+    height: fit-content;
+    bottom: 1rem;
+    right: 1rem;
+    border: 3px solid var(--primary-color);
+    width: 5rem;
+  }
+  @media only screen and (max-width: 480px) {
+    height: fit-content;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    border: 3px solid var(--primary-color);
+    width: 5rem;
+  }
+  & > div {
+    display: block;
+    position: relative;
+    text-align: center;
+    color: #b5b6b7;
+    padding: 10px;
+    font-size: 24px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  &--icon {
+    width: 2rem;
+    height: 2rem;
+    fill: #ddd;
+    transition: 0.3s ease-out;
+    @media only screen and (max-width: 1024px) {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  &--icon:hover {
+    fill: var(--primary-color);
+  }
+  &--right {
+    margin-bottom: -1rem;
+  }
+  &--right:hover &--icon {
+    fill: var(--primary-color);
+  }
+  &--left {
+  }
+}

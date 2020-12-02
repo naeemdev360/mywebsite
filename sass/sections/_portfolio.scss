@@ -5,6 +5,9 @@
     margin: 1rem 0;
     margin-bottom: 3rem;
     display: flex;
+    @media only screen and (max-width: 575px) {
+      flex-wrap: wrap;
+    }
     &--item:not(:last-child) {
       margin-right: 2rem;
     }
@@ -13,6 +16,9 @@
       cursor: pointer;
       text-transform: capitalize;
       transition: 0.4s ease-out;
+      @media only screen and (max-width: 575px) {
+        margin-bottom: 1rem;
+      }
       &:hover,
       &.active {
         color: #dddddd;
@@ -30,6 +36,17 @@
       transition: 0.4s ease-out;
       overflow: hidden;
       height: 100%;
+      &.remove {
+        transform: scale(0);
+        height: 0;
+        display: none;
+      }
+      @media only screen and (max-width: 575px) {
+        flex: 0 0 48%;
+      }
+      @media only screen and (max-width: 480px) {
+        flex: 0 0 100%;
+      }
       &__img-box {
         overflow: hidden;
         width: 100%;

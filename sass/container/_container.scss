@@ -8,6 +8,15 @@
   top: 10%;
   left: 10%;
 
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    display: block;
+  }
+
   &__left {
     flex: 0 0 35%;
     display: flex;
@@ -16,11 +25,33 @@
     justify-content: center;
     padding: 1rem;
     border-right: 1px solid #dddddd2f;
-    // position: relative;
+    background-color: var(--container-bg);
+    transition: 0.4s ease-out;
+
+    @media only screen and (max-width: 1024px) {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      right: 0;
+      height: 100%;
+      justify-content: flex-start;
+      padding: 2rem 7rem;
+      transform: translateX(100%);
+      z-index: 50;
+      &.open {
+        transform: translateX(0);
+      }
+    }
+
     .avater {
       border-radius: 50%;
       width: 200px;
       height: 200px;
+
+      @media only screen and (max-width: 1024px) {
+        width: 150px;
+        height: 150px;
+      }
       img {
         border-radius: 50%;
       }
@@ -56,6 +87,12 @@
       top: 0;
       padding: 2rem 0;
       background-color: #353b48;
+
+      @media only screen and (max-width: 1024px) {
+        position: static;
+        display: block;
+        transform: translateX(0%);
+      }
       &__item:not(:last-child) {
         margin-bottom: 2rem;
       }
@@ -89,6 +126,27 @@
             right: 100%;
           }
         }
+
+        @media only screen and (max-width: 1024px) {
+          .menu-icon {
+            display: none;
+          }
+          .menu-text {
+            position: static;
+            background-color: transparent;
+            padding: 0;
+            transition: 0.4s ease-out;
+            z-index: 10;
+            visibility: visible;
+            opacity: 1;
+            color: #b5b6b7;
+          }
+          &.main-menu__link--active {
+            .menu-text {
+              color: white;
+            }
+          }
+        }
       }
 
       &__link--active {
@@ -97,6 +155,7 @@
         }
       }
     }
+
     .social {
       list-style: none;
       display: flex;
@@ -141,6 +200,10 @@
     flex: 0 0 65%;
     display: flex;
     border-radius: 0 30px 30px 0;
+    @media only screen and (max-width: 1024px) {
+      height: 100%;
+      border-radius: 0;
+    }
     & > * {
       position: absolute;
       top: 0;
@@ -155,6 +218,13 @@
       visibility: hidden;
       overflow: auto;
       opacity: 0;
+      @media only screen and (max-width: 1024px) {
+        border-radius: 0;
+        padding: 6rem;
+      }
+      @media only screen and (max-width: 480px) {
+        padding: 5rem;
+      }
 
       &::-webkit-scrollbar {
         width: 5px;
