@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "node:sass": "node-sass sass/main.scss build/css/main.css -w",
-    "parcel":"parcel watch ./js/index.js --out-dir ./build/js --out-file bundler.js"
+    "parcel": "parcel watch ./js/index.js --out-dir ./build/js --out-file bundler.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "emailjs-com": "^2.6.4",
     "node-sass": "^5.0.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
   }
 }

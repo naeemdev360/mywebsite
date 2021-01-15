@@ -281,7 +281,165 @@ var testimonial = function testimonial() {
 };
 
 exports.testimonial = testimonial;
-},{}],"contactForm.js":[function(require,module,exports) {
+},{}],"../node_modules/emailjs-com/source/models/EmailJSResponseStatus.js":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EmailJSResponseStatus = void 0;
+var EmailJSResponseStatus = /** @class */ (function () {
+    function EmailJSResponseStatus(httpResponse) {
+        this.status = httpResponse.status;
+        this.text = httpResponse.responseText;
+    }
+    return EmailJSResponseStatus;
+}());
+exports.EmailJSResponseStatus = EmailJSResponseStatus;
+
+},{}],"../node_modules/emailjs-com/source/services/ui/UI.js":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UI = void 0;
+var UI = /** @class */ (function () {
+    function UI() {
+    }
+    UI.clearAll = function (form) {
+        form.classList.remove(this.PROGRESS);
+        form.classList.remove(this.DONE);
+        form.classList.remove(this.ERROR);
+    };
+    UI.progressState = function (form) {
+        this.clearAll(form);
+        form.classList.add(this.PROGRESS);
+    };
+    UI.successState = function (form) {
+        form.classList.remove(this.PROGRESS);
+        form.classList.add(this.DONE);
+    };
+    UI.errorState = function (form) {
+        form.classList.remove(this.PROGRESS);
+        form.classList.add(this.ERROR);
+    };
+    UI.PROGRESS = 'emailjs-sending';
+    UI.DONE = 'emailjs-success';
+    UI.ERROR = 'emailjs-error';
+    return UI;
+}());
+exports.UI = UI;
+
+},{}],"../node_modules/emailjs-com/source/index.js":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EmailJSResponseStatus = exports.sendForm = exports.send = exports.init = void 0;
+var EmailJSResponseStatus_1 = require("./models/EmailJSResponseStatus");
+Object.defineProperty(exports, "EmailJSResponseStatus", { enumerable: true, get: function () { return EmailJSResponseStatus_1.EmailJSResponseStatus; } });
+var UI_1 = require("./services/ui/UI");
+var _userID = null;
+var _origin = 'https://api.emailjs.com';
+function sendPost(url, data, headers) {
+    if (headers === void 0) { headers = {}; }
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', function (event) {
+            var responseStatus = new EmailJSResponseStatus_1.EmailJSResponseStatus(event.target);
+            if (responseStatus.status === 200 || responseStatus.text === 'OK') {
+                resolve(responseStatus);
+            }
+            else {
+                reject(responseStatus);
+            }
+        });
+        xhr.addEventListener('error', function (event) {
+            reject(new EmailJSResponseStatus_1.EmailJSResponseStatus(event.target));
+        });
+        xhr.open('POST', url, true);
+        for (var key in headers) {
+            xhr.setRequestHeader(key, headers[key]);
+        }
+        xhr.send(data);
+    });
+}
+function appendGoogleCaptcha(templatePrams) {
+    var element = document && document.getElementById('g-recaptcha-response');
+    if (element && element.value) {
+        templatePrams['g-recaptcha-response'] = element.value;
+    }
+    element = null;
+    return templatePrams;
+}
+function fixIdSelector(selector) {
+    if (selector[0] !== '#' && selector[0] !== '.') {
+        return '#' + selector;
+    }
+    return selector;
+}
+/**
+ * Initiation
+ * @param {string} userID - set the EmailJS user ID
+ * @param {string} origin - set the EmailJS origin
+ */
+function init(userID, origin) {
+    _userID = userID;
+    _origin = origin || 'https://api.emailjs.com';
+}
+exports.init = init;
+/**
+ * Send a template to the specific EmailJS service
+ * @param {string} serviceID - the EmailJS service ID
+ * @param {string} templateID - the EmailJS template ID
+ * @param {Object} templatePrams - the template params, what will be set to the EmailJS template
+ * @param {string} userID - the EmailJS user ID
+ * @returns {Promise<EmailJSResponseStatus>}
+ */
+function send(serviceID, templateID, templatePrams, userID) {
+    var params = {
+        lib_version: '2.6.4',
+        user_id: userID || _userID,
+        service_id: serviceID,
+        template_id: templateID,
+        template_params: appendGoogleCaptcha(templatePrams)
+    };
+    return sendPost(_origin + '/api/v1.0/email/send', JSON.stringify(params), {
+        'Content-type': 'application/json'
+    });
+}
+exports.send = send;
+/**
+ * Send a form the specific EmailJS service
+ * @param {string} serviceID - the EmailJS service ID
+ * @param {string} templateID - the EmailJS template ID
+ * @param {string | HTMLFormElement} form - the form element or selector
+ * @param {string} userID - the EmailJS user ID
+ * @returns {Promise<EmailJSResponseStatus>}
+ */
+function sendForm(serviceID, templateID, form, userID) {
+    if (typeof form === 'string') {
+        form = document.querySelector(fixIdSelector(form));
+    }
+    if (!form || form.nodeName !== 'FORM') {
+        throw 'Expected the HTML form element or the style selector of form';
+    }
+    UI_1.UI.progressState(form);
+    var formData = new FormData(form);
+    formData.append('lib_version', '2.6.4');
+    formData.append('service_id', serviceID);
+    formData.append('template_id', templateID);
+    formData.append('user_id', userID || _userID);
+    return sendPost(_origin + '/api/v1.0/email/send-form', formData)
+        .then(function (response) {
+        UI_1.UI.successState(form);
+        return response;
+    }, function (error) {
+        UI_1.UI.errorState(form);
+        return Promise.reject(error);
+    });
+}
+exports.sendForm = sendForm;
+exports.default = {
+    init: init,
+    send: send,
+    sendForm: sendForm
+};
+
+},{"./models/EmailJSResponseStatus":"../node_modules/emailjs-com/source/models/EmailJSResponseStatus.js","./services/ui/UI":"../node_modules/emailjs-com/source/services/ui/UI.js"}],"contactForm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -289,13 +447,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.contactForm = void 0;
 
+var _emailjsCom = _interopRequireDefault(require("emailjs-com"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var contactForm = function contactForm() {
+  var contactForm = document.getElementById("contactForm");
+  var name = document.getElementById("name");
+  var email = document.getElementById("email");
+  var subject = document.getElementById("subject");
+  var message = document.getElementById("message");
   mapboxgl.accessToken = "pk.eyJ1IjoibmFlZW0yNTIiLCJhIjoiY2tpNG0yN3V2MDl6bzJwcGJzampuOTkyaiJ9.hecYaIXlcm7rpSO1puaPmg";
   var map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/naeem252/ckh0czbun86d31an2i3c8kv4m",
     center: [90.25821, 23.921109],
-    zoom: 10
+    zoom: 12
   });
   map.scrollZoom.disable();
   var formControl = document.querySelectorAll(".form__control");
@@ -307,17 +474,36 @@ var contactForm = function contactForm() {
 
   var controlBlur = function controlBlur(e) {
     var formGroup = e.target.closest(".form__group");
-    formGroup.classList.remove("input-focus");
+    console.log(!e.target.value.trim());
+
+    if (!e.target.value.trim()) {
+      formGroup.classList.remove("input-focus");
+    }
   };
 
   formControl.forEach(function (input) {
     input.addEventListener("focus", controlFocused);
     input.addEventListener("blur", controlBlur);
+  }); //send mesage by email
+
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!name.value.trim() || !email.value.trim() || subject.value.trim() || !message.value.trim()) {
+      alert("all field are required");
+      return;
+    }
+
+    _emailjsCom.default.sendForm("service_88tj3th", "template_7znvnlb", e.target, "user_GVb7xRkB8QbqPXfKvKKpz").then(function (result) {
+      console.log(result.text, result);
+    }, function (error) {
+      console.log(error.text);
+    });
   });
 };
 
 exports.contactForm = contactForm;
-},{}],"portfolio.js":[function(require,module,exports) {
+},{"emailjs-com":"../node_modules/emailjs-com/source/index.js"}],"portfolio.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -354,6 +540,40 @@ var sortable = function sortable() {
 };
 
 exports.sortable = sortable;
+},{}],"home.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.home = void 0;
+
+var home = function home() {
+  var titleBox = document.querySelector(".home__content-text--title");
+  var titles = titleBox.querySelectorAll("span");
+  var currIndex = 3;
+  titles.forEach(function (title, index) {
+    title.style.transform = "translateX(".concat(index * 100, "%)");
+  });
+
+  var changedTitles = function changedTitles(i) {
+    titles.forEach(function (title, index) {
+      title.style.transform = "translateX(".concat((index + i - titles.length) * 100, "%)");
+      title.style.opacity = index + i - titles.length === 0 ? 1 : 0;
+    });
+  };
+
+  setInterval(function () {
+    changedTitles(currIndex);
+    currIndex--;
+
+    if (currIndex === 0) {
+      currIndex = 3;
+    }
+  }, 3000);
+};
+
+exports.home = home;
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -367,8 +587,12 @@ var _contactForm = require("./contactForm");
 
 var _portfolio = require("./portfolio");
 
+var _home = require("./home");
+
 // import { skillWidth } from "./resume";
-//paralex
+//home
+(0, _home.home)(); //paralex
+
 window.addEventListener("mousemove", _paralex.paralex); //testimonial
 
 (0, _testimonial.testimonial)(); //main-menu
@@ -380,7 +604,7 @@ window.addEventListener("mousemove", _paralex.paralex); //testimonial
 //portfolio
 
 (0, _portfolio.sortable)();
-},{"./paralex":"paralex.js","./main-menu":"main-menu.js","./testimonial":"testimonial.js","./contactForm":"contactForm.js","./portfolio":"portfolio.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./paralex":"paralex.js","./main-menu":"main-menu.js","./testimonial":"testimonial.js","./contactForm":"contactForm.js","./portfolio":"portfolio.js","./home":"home.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -408,7 +632,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50218" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51429" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -439,9 +663,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         assetsToAccept.forEach(function (v) {
           hmrAcceptRun(v[0], v[1]);
         });
-      } else if (location.reload) {
-        // `location` global exists in a web worker context but lacks `.reload()` function.
-        location.reload();
+      } else {
+        window.location.reload();
       }
     }
 

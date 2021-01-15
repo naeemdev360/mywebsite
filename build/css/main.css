@@ -146,6 +146,7 @@ ARROW NAVIGATION
   fill: var(--primary-color); }
 
 .btn {
+  text-decoration: none;
   padding: 1rem 3rem;
   border: 0;
   border-radius: 100px;
@@ -281,7 +282,7 @@ ARROW NAVIGATION
   justify-content: center;
   align-items: center;
   background-color: #1e90ff;
-  background-image: url(../../build/images/bg-image.png);
+  background-image: url(../images/bg-image.png);
   background-size: 150%;
   background-position: 40% 40%; }
 
@@ -311,7 +312,8 @@ ARROW NAVIGATION
     padding: 1rem;
     border-right: 1px solid #dddddd2f;
     background-color: var(--container-bg);
-    transition: 0.4s ease-out; }
+    transition: 0.4s ease-out;
+    border-radius: 30px; }
     @media only screen and (max-width: 1024px) {
       .container__left {
         position: absolute;
@@ -502,7 +504,18 @@ ARROW NAVIGATION
     #home .home__content-text--title {
       font-weight: 300;
       letter-spacing: 1px;
-      color: #b1b1b1; }
+      color: #b1b1b1;
+      display: block;
+      overflow: hidden;
+      min-height: 4rem;
+      z-index: 10;
+      position: relative; }
+      #home .home__content-text--title span {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        transition: 0.4s ease-out; }
 
 #about > div {
   margin-bottom: 5rem; }
@@ -840,39 +853,40 @@ ARROW NAVIGATION
     #portfolio .sort__list--item:hover, #portfolio .sort__list--item.active {
       color: #dddddd; }
 
-#portfolio .portfolios {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; }
-  #portfolio .portfolios .portfolio {
-    margin-bottom: 3rem;
-    flex: 0 0 32%;
-    cursor: pointer;
-    transition: 0.4s ease-out;
+#portfolio .portfolios .portfolio:not(:last-child) {
+  margin-right: 1.3%; }
+
+#portfolio .portfolios .portfolio {
+  float: left;
+  margin-bottom: 3rem;
+  width: 31%;
+  cursor: pointer;
+  transition: 0.4s ease-out;
+  overflow: hidden;
+  height: 100%; }
+  #portfolio .portfolios .portfolio.remove {
+    transform: scale(0);
+    height: 0;
+    width: 0; }
+  @media only screen and (max-width: 575px) {
+    #portfolio .portfolios .portfolio {
+      width: 48%;
+      margin-right: 1%; } }
+  @media only screen and (max-width: 480px) {
+    #portfolio .portfolios .portfolio {
+      width: 100%; } }
+  #portfolio .portfolios .portfolio__img-box {
     overflow: hidden;
-    height: 100%; }
-    #portfolio .portfolios .portfolio.remove {
-      transform: scale(0);
-      height: 0;
-      display: none; }
-    @media only screen and (max-width: 575px) {
-      #portfolio .portfolios .portfolio {
-        flex: 0 0 48%; } }
-    @media only screen and (max-width: 480px) {
-      #portfolio .portfolios .portfolio {
-        flex: 0 0 100%; } }
-    #portfolio .portfolios .portfolio__img-box {
-      overflow: hidden;
-      width: 100%;
-      height: 15rem; }
-    #portfolio .portfolios .portfolio img {
-      transition: 0.3s ease-out; }
-    #portfolio .portfolios .portfolio:hover img {
-      transform: scale(1.1); }
-    #portfolio .portfolios .portfolio__title {
-      margin: 0;
-      text-transform: capitalize;
-      margin-top: 1rem; }
+    width: 100%;
+    height: 15rem; }
+  #portfolio .portfolios .portfolio img {
+    transition: 0.3s ease-out; }
+  #portfolio .portfolios .portfolio:hover img {
+    transform: scale(1.1); }
+  #portfolio .portfolios .portfolio__title {
+    margin: 0;
+    text-transform: capitalize;
+    margin-top: 1rem; }
 
 #blog div {
   display: flex;
@@ -896,9 +910,10 @@ ARROW NAVIGATION
     #contact .contact__wrapper {
       flex-direction: column; } }
   #contact .contact__wrapper .personal__info {
-    flex: 30% 0 0;
+    flex: 0 0 20%;
     margin: 0;
     padding: 0;
+    margin-right: 2%;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -921,7 +936,8 @@ ARROW NAVIGATION
       #contact .contact__wrapper .personal__info--item:not(:last-child) {
         margin-bottom: 1.3rem; }
   #contact .contact__wrapper .contact__input {
-    flex: 65% 0 0; }
+    flex: 0 0 60%;
+    margin-right: 2%; }
     #contact .contact__wrapper .contact__input .map {
       width: 100%;
       height: 15rem;

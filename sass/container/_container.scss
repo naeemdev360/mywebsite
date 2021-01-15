@@ -27,6 +27,7 @@
     border-right: 1px solid #dddddd2f;
     background-color: var(--container-bg);
     transition: 0.4s ease-out;
+    border-radius: 30px;
 
     @media only screen and (max-width: 1024px) {
       position: absolute;

@@ -134,7 +134,11 @@
 
           <ul class="social">
             <li class="social__item">
-              <a href="#" class="social__link">
+              <a
+                href="https://www.facebook.com/naeem252/"
+                target="_blank"
+                class="social__link"
+              >
                 <svg class="social-icon social-icon__facebook">
                   <use
                     xlink:href="icons/Mycollection-SVG-sprite.svg#facebook-logo
@@ -144,8 +148,12 @@
               </a>
             </li>
             <li class="social__item">
-              <a href="#" class="social__link">
-                <svg class="social-icon social-icon__facebook">
+              <a
+                href="https://twitter.com/naeemhasan252"
+                target="_blank"
+                class="social__link"
+              >
+                <svg class="social-icon social-icon__twitter">
                   <use
                     xlink:href="icons/Mycollection-SVG-sprite.svg#twitter
                   "
@@ -154,8 +162,12 @@
               </a>
             </li>
             <li class="social__item">
-              <a href="#" class="social__link">
-                <svg class="social-icon social-icon__facebook">
+              <a
+                href="https://github.com/naeem252"
+                target="_blank"
+                class="social__link"
+              >
+                <svg class="social-icon social-icon__github">
                   <use
                     xlink:href="icons/Mycollection-SVG-sprite.svg#github
                   "
@@ -164,8 +176,12 @@
               </a>
             </li>
             <li class="social__item">
-              <a href="#" class="social__link">
-                <svg class="social-icon social-icon__facebook">
+              <a
+                href="https://www.behance.net/naeemdev"
+                target="_blank"
+                class="social__link"
+              >
+                <svg class="social-icon social-icon__behance">
                   <use
                     xlink:href="icons/Mycollection-SVG-sprite.svg#behance
                   "
@@ -174,8 +190,12 @@
               </a>
             </li>
             <li class="social__item">
-              <a href="#" class="social__link">
-                <svg class="social-icon social-icon__facebook">
+              <a
+                href="https://www.linkedin.com/in/naeeem-hasan-62390a164/"
+                target="_blank"
+                class="social__link"
+              >
+                <svg class="social-icon social-icon__linkedin">
                   <use
                     xlink:href="icons/Mycollection-SVG-sprite.svg#linkedin
                   "
@@ -185,7 +205,9 @@
             </li>
           </ul>
           <div class="cv">
-            <button class="btn btn__ghost">download CV</button>
+            <a class="btn btn__ghost" href="files/CV.pdf" target="_blank"
+              >download CV</a
+            >
           </div>
           <div class="footer">
             <p class="footer__text">&copy; 2020 All rights reserved.</p>
@@ -196,7 +218,11 @@
             <div class="home__content">
               <h1 class="home__content-text">
                 <span class="home__content-text--name">Naeem Hasan</span>
-                <span class="home__content-text--title">Web developer</span>
+                <div class="home__content-text--title">
+                  <span>Web developer</span>
+                  <span>Web designer</span>
+                  <span>Web Engineer</span>
+                </div>
               </h1>
             </div>
           </section>
@@ -747,7 +773,7 @@
                       ></use>
                     </svg>
                   </span>
-                  <span class="personal__info--text">Dhaka</span>
+                  <span class="personal__info--text">Savar,Dhaka</span>
                 </li>
                 <li class="personal__info--item">
                   <span class="personal__info--icon">
@@ -757,7 +783,7 @@
                       ></use>
                     </svg>
                   </span>
-                  <span class="personal__info--text">+017785211</span>
+                  <span class="personal__info--text">+8801625190484</span>
                 </li>
                 <li class="personal__info--item">
                   <span class="personal__info--icon">
@@ -767,7 +793,9 @@
                       ></use>
                     </svg>
                   </span>
-                  <span class="personal__info--text">example@gmail.com</span>
+                  <span class="personal__info--text"
+                    >hasannaeem215@gmail.com</span
+                  >
                 </li>
                 <li class="personal__info--item">
                   <span class="personal__info--icon">
@@ -777,7 +805,7 @@
                       ></use>
                     </svg>
                   </span>
-                  <span class="personal__info--text">Freelance availabel</span>
+                  <span class="personal__info--text">Freelance available</span>
                 </li>
               </ul>
 
@@ -786,7 +814,7 @@
                 <h3 class="secondary-heading">
                   How Can I <span class="highlighted">Help You?</span>
                 </h3>
-                <form>
+                <form id="contactForm">
                   <div class="contact__form">
                     <div class="contact__form--left">
                       <div class="form__group">
@@ -794,7 +822,7 @@
                           class="form__control"
                           id="name"
                           type="text"
-                          name="name"
+                          name="to_name"
                         />
                         <label for="name">Full Name</label>
                       </div>
@@ -803,7 +831,7 @@
                           class="form__control"
                           id="email"
                           type="email"
-                          name="email"
+                          name="from_name"
                         />
                         <label for="email">Email Address</label>
                       </div>
