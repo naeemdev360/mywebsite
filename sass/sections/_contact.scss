@@ -70,6 +70,10 @@
               transition: 0.3s ease-out;
               opacity: 0;
             }
+            label {
+              top: 50%;
+              transform: translateY(-50%) translateX(15%);
+            }
             &.input-focus {
               &::before {
                 width: 100%;
@@ -80,11 +84,8 @@
                 border-color: transparent;
               }
             }
-            label {
-              top: 50%;
-              transform: translateY(-50%) translateX(15%);
-            }
-            .form__control:focus + label {
+            .form__control:focus + label,
+            &.input-focus label {
               top: -25% !important;
               font-size: 1.2rem;
               transform: translateY(-50%) translateX(0%) !important;

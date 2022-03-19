@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "node:sass": "node-sass sass/main.scss build/css/main.css -w",
+    "sass": "sass sass/main.scss build/css/main.css -w",
     "parcel": "parcel watch ./js/index.js --out-dir ./build/js --out-file bundler.js"
   },
   "keywords": [],
@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "emailjs-com": "^2.6.4",
-    "node-sass": "^5.0.0"
+    "sass": "^1.49.9"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.3"

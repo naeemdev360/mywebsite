@@ -1,4 +1,4 @@
-import { paralex } from "./paralex";
+import { paralex, mouseMoveParalex } from "./paralex";
 import { mainMenu } from "./main-menu";
 import { testimonial } from "./testimonial";
 import { contactForm } from "./contactForm";
@@ -8,7 +8,10 @@ import { home } from "./home";
 //home
 home();
 //paralex
-window.addEventListener("mousemove", paralex);
+// window.addEventListener("mousemove", paralex);
+paralex();
+window.addEventListener("mousemove", mouseMoveParalex);
+
 //testimonial
 testimonial();
 //main-menu

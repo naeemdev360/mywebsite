@@ -123,13 +123,46 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.paralex = void 0;
+exports.paralex = exports.mouseMoveParalex = void 0;
 
-var paralex = function paralex(e) {
+var mouseMoveParalex = function mouseMoveParalex(e) {
+  var moveValueX = e.pageX * 0.04 + 40;
+  var moveValueY = e.pageY * 0.04 + 40;
   var paralex = document.getElementById("paralex");
   paralex.style.backgroundPositionX = "".concat(e.pageX * 0.04 + 40, "%");
   paralex.style.backgroundPositionY = "".concat(e.pageY * 0.04 + 40, "%");
 };
+
+exports.mouseMoveParalex = mouseMoveParalex;
+
+var paralex = function paralex() {
+  var windowWidth = window.innerWidth;
+  var windowHeight = window.innerHeight;
+  var paralex = document.getElementById("paralex"); //Reset html divs
+
+  paralex.innerHTML = "";
+
+  for (var i = 0; i < 300; i++) {
+    var div = document.createElement("div");
+    div.className = "paralex__box";
+    paralex.appendChild(div);
+  }
+
+  anime({
+    targets: ".paralex__box",
+    translateX: function translateX() {
+      return anime.random(-windowWidth, windowWidth);
+    },
+    translateY: function translateY() {
+      return anime.random(-windowHeight, windowHeight);
+    },
+    scale: function scale() {
+      return anime.random(1, 3);
+    },
+    duration: 2000
+  });
+}; // mouseMoveParalex();
+
 
 exports.paralex = paralex;
 },{}],"resume.js":[function(require,module,exports) {
@@ -172,6 +205,8 @@ exports.mainMenu = void 0;
 
 var _resume = require("./resume");
 
+var _paralex = require("./paralex");
+
 var mainMenu = function mainMenu() {
   var mainMenu = document.querySelector(".main-menu");
   var links = document.querySelectorAll(".main-menu__link");
@@ -181,9 +216,15 @@ var mainMenu = function mainMenu() {
   var navArrowContainer = document.querySelector(".arrows__nav");
 
   var menuClick = function menuClick(e) {
+    //Close the side menu
+    leftSection.classList.remove("open"); //Remove open class from the toggle button
+
+    toggleBtn.classList.remove("open");
     var link = e.target.closest(".main-menu__link");
     if (!link) return;
-    if (link.classList.contains("main-menu__link--active")) return;
+    if (link.classList.contains("main-menu__link--active")) return; //Regerate paralex
+
+    (0, _paralex.paralex)();
     links.forEach(function (link) {
       return link.classList.remove("main-menu__link--active");
     });
@@ -210,8 +251,10 @@ var mainMenu = function mainMenu() {
   var navArrowClick = function navArrowClick(e) {
     if (e.target === navArrowContainer) {
       return;
-    }
+    } //Regerate paralex
 
+
+    (0, _paralex.paralex)();
     var direction = e.target.closest("div");
     var currSection = document.querySelector("section.visible");
     sections.forEach(function (section) {
@@ -250,7 +293,7 @@ var mainMenu = function mainMenu() {
 };
 
 exports.mainMenu = mainMenu;
-},{"./resume":"resume.js"}],"testimonial.js":[function(require,module,exports) {
+},{"./resume":"resume.js","./paralex":"paralex.js"}],"testimonial.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -474,7 +517,6 @@ var contactForm = function contactForm() {
 
   var controlBlur = function controlBlur(e) {
     var formGroup = e.target.closest(".form__group");
-    console.log(!e.target.value.trim());
 
     if (!e.target.value.trim()) {
       formGroup.classList.remove("input-focus");
@@ -592,8 +634,10 @@ var _home = require("./home");
 // import { skillWidth } from "./resume";
 //home
 (0, _home.home)(); //paralex
+// window.addEventListener("mousemove", paralex);
 
-window.addEventListener("mousemove", _paralex.paralex); //testimonial
+(0, _paralex.paralex)();
+window.addEventListener("mousemove", _paralex.mouseMoveParalex); //testimonial
 
 (0, _testimonial.testimonial)(); //main-menu
 
@@ -632,7 +676,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51429" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63220" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -663,8 +707,9 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         assetsToAccept.forEach(function (v) {
           hmrAcceptRun(v[0], v[1]);
         });
-      } else {
-        window.location.reload();
+      } else if (location.reload) {
+        // `location` global exists in a web worker context but lacks `.reload()` function.
+        location.reload();
       }
     }
 

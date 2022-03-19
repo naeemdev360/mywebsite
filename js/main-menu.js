@@ -1,4 +1,5 @@
 import { skillWidth } from "./resume";
+import { paralex } from "./paralex";
 export const mainMenu = () => {
   const mainMenu = document.querySelector(".main-menu");
   const links = document.querySelectorAll(".main-menu__link");
@@ -7,21 +8,28 @@ export const mainMenu = () => {
   const toggleBtn = document.querySelector(".menu-toggle");
   const navArrowContainer = document.querySelector(".arrows__nav");
 
-  const menuClick = e => {
+  const menuClick = (e) => {
+    //Close the side menu
+    leftSection.classList.remove("open");
+    //Remove open class from the toggle button
+    toggleBtn.classList.remove("open");
     const link = e.target.closest(".main-menu__link");
     if (!link) return;
     if (link.classList.contains("main-menu__link--active")) return;
-    links.forEach(link => link.classList.remove("main-menu__link--active"));
+    //Regerate paralex
+    paralex();
+    links.forEach((link) => link.classList.remove("main-menu__link--active"));
 
     const id = link.getAttribute("href");
     const section = document.querySelector(id);
-    sections.forEach(section => section.classList.remove("visible"));
+    sections.forEach((section) => section.classList.remove("visible"));
     section.classList.add("visible");
     link.classList.add("main-menu__link--active");
 
     skillWidth(id === "#resume");
   };
-  const openLeftContainer = e => {
+
+  const openLeftContainer = (e) => {
     e.currentTarget.classList.toggle("open");
     if (e.currentTarget.classList.contains("open")) {
       leftSection.classList.add("open");
@@ -29,14 +37,16 @@ export const mainMenu = () => {
       leftSection.classList.remove("open");
     }
   };
-  const navArrowClick = e => {
+  const navArrowClick = (e) => {
     if (e.target === navArrowContainer) {
       return;
     }
+    //Regerate paralex
+    paralex();
     const direction = e.target.closest("div");
     const currSection = document.querySelector("section.visible");
-    sections.forEach(section => section.classList.remove("visible"));
-    links.forEach(link => link.classList.remove("main-menu__link--active"));
+    sections.forEach((section) => section.classList.remove("visible"));
+    links.forEach((link) => link.classList.remove("main-menu__link--active"));
     if (direction.classList.contains("arrows__nav--right")) {
       if (currSection.nextElementSibling) {
         currSection.nextElementSibling.classList.add("visible");

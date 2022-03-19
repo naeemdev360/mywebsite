@@ -18,25 +18,25 @@ export const contactForm = () => {
   map.scrollZoom.disable();
   const formControl = document.querySelectorAll(".form__control");
 
-  const controlFocused = e => {
+  const controlFocused = (e) => {
     const formGroup = e.target.closest(".form__group");
     formGroup.classList.add("input-focus");
   };
-  const controlBlur = e => {
+  const controlBlur = (e) => {
     const formGroup = e.target.closest(".form__group");
-    console.log(!e.target.value.trim());
+
     if (!e.target.value.trim()) {
       formGroup.classList.remove("input-focus");
     }
   };
-  formControl.forEach(input => {
+  formControl.forEach((input) => {
     input.addEventListener("focus", controlFocused);
     input.addEventListener("blur", controlBlur);
   });
 
   //send mesage by email
 
-  contactForm.addEventListener("submit", e => {
+  contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
     if (
       !name.value.trim() ||
@@ -55,10 +55,10 @@ export const contactForm = () => {
         "user_GVb7xRkB8QbqPXfKvKKpz"
       )
       .then(
-        result => {
+        (result) => {
           console.log(result.text, result);
         },
-        error => {
+        (error) => {
           console.log(error.text);
         }
       );

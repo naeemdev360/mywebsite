@@ -1,13 +1,21 @@
 .container {
   position: absolute;
   width: 80%;
-  height: 80%;
   display: flex;
   background-color: var(--container-bg);
   border-radius: 30px;
   top: 10%;
   left: 10%;
-
+  #particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  @media only screen and (min-width: 1025px) {
+    height: 80%;
+  }
   @media only screen and (max-width: 1024px) {
     width: 100%;
     height: 100%;
@@ -27,7 +35,7 @@
     border-right: 1px solid #dddddd2f;
     background-color: var(--container-bg);
     transition: 0.4s ease-out;
-    border-radius: 30px;
+    border-radius: 30px 0 0 30px;
 
     @media only screen and (max-width: 1024px) {
       position: absolute;
@@ -37,7 +45,11 @@
       height: 100%;
       justify-content: flex-start;
       padding: 2rem 7rem;
+      padding-bottom: 5rem;
+      overflow: auto;
       transform: translateX(100%);
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
       z-index: 50;
       &.open {
         transform: translateX(0);
@@ -145,6 +157,7 @@
           &.main-menu__link--active {
             .menu-text {
               color: white;
+              font-weight: bold;
             }
           }
         }
@@ -188,6 +201,9 @@
     .footer {
       position: absolute;
       bottom: 0rem;
+      @media only screen and (max-width: 1024px) {
+        bottom: -5rem;
+      }
       &__text {
         font-size: 1.4rem;
         text-transform: capitalize;
@@ -205,16 +221,16 @@
       height: 100%;
       border-radius: 0;
     }
-    & > * {
+    background-color: var(--section-bg);
+    & > section {
       position: absolute;
       top: 0;
       left: 0;
-      background-color: var(--section-bg);
       width: 100%;
       min-height: 100%;
       height: 100%;
       padding: 4rem;
-      border-radius: 30px;
+      border-radius: 0 30px 30px 0;
       transition: 0.4s ease-out;
       visibility: hidden;
       overflow: auto;
