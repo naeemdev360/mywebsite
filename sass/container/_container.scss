@@ -6,15 +6,17 @@
   border-radius: 30px;
   top: 10%;
   left: 10%;
+  border: 2px solid rgba(255, 255, 255, 0.324);
+
+  @media only screen and (min-width: 1025px) {
+    height: 80%;
+  }
   #particles-js {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 95%;
     top: 0;
     left: 0;
-  }
-  @media only screen and (min-width: 1025px) {
-    height: 80%;
   }
   @media only screen and (max-width: 1024px) {
     width: 100%;
@@ -222,6 +224,7 @@
       border-radius: 0;
     }
     background-color: var(--section-bg);
+
     & > section {
       position: absolute;
       top: 0;

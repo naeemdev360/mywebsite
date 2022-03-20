@@ -1,4 +1,5 @@
 import { paralex, mouseMoveParalex } from "./paralex";
+import { skillWidth } from "./resume";
 import { mainMenu } from "./main-menu";
 import { testimonial } from "./testimonial";
 import { contactForm } from "./contactForm";
@@ -22,3 +23,8 @@ contactForm();
 // skillWidth();
 //portfolio
 sortable();
+
+//is now in resume page
+if (window.location.href.includes("resume")) {
+  skillWidth(true);
+}

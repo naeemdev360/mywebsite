@@ -6,6 +6,7 @@ export const contactForm = () => {
   const email = document.getElementById("email");
   const subject = document.getElementById("subject");
   const message = document.getElementById("message");
+  const sendBtn = document.getElementById("send-btn");
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoibmFlZW0yNTIiLCJhIjoiY2tpNG0yN3V2MDl6bzJwcGJzampuOTkyaiJ9.hecYaIXlcm7rpSO1puaPmg";
@@ -41,12 +42,14 @@ export const contactForm = () => {
     if (
       !name.value.trim() ||
       !email.value.trim() ||
-      subject.value.trim() ||
+      !subject.value.trim() ||
       !message.value.trim()
     ) {
-      alert("all field are required");
+      alert("all fields are required");
       return;
     }
+    sendBtn.textContent = "Sending...";
+    sendBtn.disabled = true;
     emailjs
       .sendForm(
         "service_88tj3th",
@@ -56,10 +59,28 @@ export const contactForm = () => {
       )
       .then(
         (result) => {
-          console.log(result.text, result);
+          // console.log(result.text, result);
+          sendBtn.disabled = false;
+          sendBtn.textContent = "Send Message";
+          //reset values
+          name.value = "";
+          email.value = "";
+          subject.value = "";
+          message.value = "";
+          //Reset the focus state
+          for (let i = 0; i < formControl.length; i++) {
+            const formGroup = formControl[i].closest(".form__group");
+
+            formGroup.classList.remove("input-focus");
+          }
+
+          alert("Thanks for contacting me!");
         },
         (error) => {
           console.log(error.text);
+          sendBtn.disabled = false;
+          sendBtn.textContent = "Send Message";
+          alert("Something went wrong");
         }
       );
   });

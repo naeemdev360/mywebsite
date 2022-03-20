@@ -1,4 +1,6 @@
 #about {
+  // position: relative;
+
   & > div {
     margin-bottom: 5rem;
   }
@@ -95,10 +97,20 @@
             font-size: 1.6rem;
             color: rgb(238, 238, 238);
           }
-          & span:last-child {
+          & span:nth-child(2) {
             color: #dddddd86;
             font-weight: 300;
           }
+        }
+        &--fiverr-link {
+          display: inline-block;
+          width: 50px;
+          height: 40px;
+          overflow: hidden;
+        }
+        &--fiverr-icon {
+          width: 50px;
+          height: 50px;
         }
 
         &--icon {
@@ -226,5 +238,10 @@
         color: rgb(161, 161, 161);
       }
     }
+  }
+
+  //Age container
+  #age-container {
+    font-weight: normal;
   }
 }

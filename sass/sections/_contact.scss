@@ -109,7 +109,7 @@
               transition: 0.3s ease-out;
               opacity: 0;
             }
-            height: 75%;
+            height: 80%;
 
             label {
               top: 5%;
@@ -127,7 +127,8 @@
               }
             }
 
-            .form__control:focus + label {
+            .form__control:focus + label,
+            &.input-focus label {
               top: -7% !important;
               font-size: 1.2rem;
               transform: translateY(-50%) translateX(0%) !important;
