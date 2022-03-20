@@ -17,7 +17,7 @@ particlesJS(
   {
     particles: {
       number: {
-        value: 160,
+        value: 100,
         density: {
           enable: true,
           value_area: 800,
@@ -52,10 +52,10 @@ particlesJS(
         },
       },
       size: {
-        value: 3,
+        value: 4,
         random: true,
         anim: {
-          enable: false,
+          enable: true,
           speed: 4,
           size_min: 0.3,
           sync: false,
@@ -74,8 +74,8 @@ particlesJS(
         direction: "none",
         random: true,
         straight: false,
-        out_mode: "out",
-        bounce: false,
+        out_mode: "bounce",
+        bounce: true,
         attract: {
           enable: false,
           rotateX: 600,

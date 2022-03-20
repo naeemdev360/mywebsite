@@ -361,18 +361,19 @@ ARROW NAVIGATION
   border-radius: 30px;
   top: 10%;
   left: 10%;
-}
-.container #particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  border: 2px solid rgba(255, 255, 255, 0.324);
 }
 @media only screen and (min-width: 1025px) {
   .container {
     height: 80%;
   }
+}
+.container #particles-js {
+  position: absolute;
+  width: 100%;
+  height: 95%;
+  top: 0;
+  left: 0;
 }
 @media only screen and (max-width: 1024px) {
   .container {
@@ -756,9 +757,19 @@ ARROW NAVIGATION
   font-size: 1.6rem;
   color: #eeeeee;
 }
-#about .testimonials .testimonial__footer--name span:last-child {
+#about .testimonials .testimonial__footer--name span:nth-child(2) {
   color: #dddddd86;
   font-weight: 300;
+}
+#about .testimonials .testimonial__footer--fiverr-link {
+  display: inline-block;
+  width: 50px;
+  height: 40px;
+  overflow: hidden;
+}
+#about .testimonials .testimonial__footer--fiverr-icon {
+  width: 50px;
+  height: 50px;
 }
 #about .testimonials .testimonial__footer--icon .testimonial--icon {
   width: 3rem;
@@ -882,6 +893,9 @@ ARROW NAVIGATION
   margin: 1rem 0;
   font-size: 2rem;
   color: #a1a1a1;
+}
+#about #age-container {
+  font-weight: normal;
 }
 
 #resume .resume__box {
@@ -1101,6 +1115,7 @@ ARROW NAVIGATION
   transform: scale(0);
   height: 0;
   width: 0;
+  margin-bottom: 0;
 }
 @media only screen and (max-width: 575px) {
   #portfolio .portfolios .portfolio {
@@ -1251,7 +1266,7 @@ ARROW NAVIGATION
 }
 #contact .contact__wrapper .contact__input .contact__form--right .form__group {
   margin-bottom: 1.5rem;
-  height: 75%;
+  height: 80%;
 }
 #contact .contact__wrapper .contact__input .contact__form--right .form__group::before {
   position: absolute;
@@ -1276,7 +1291,7 @@ ARROW NAVIGATION
 #contact .contact__wrapper .contact__input .contact__form--right .form__group.input-focus .form__control {
   border-color: transparent;
 }
-#contact .contact__wrapper .contact__input .contact__form--right .form__group .form__control:focus + label {
+#contact .contact__wrapper .contact__input .contact__form--right .form__group .form__control:focus + label, #contact .contact__wrapper .contact__input .contact__form--right .form__group.input-focus label {
   top: -7% !important;
   font-size: 1.2rem;
   transform: translateY(-50%) translateX(0%) !important;

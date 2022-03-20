@@ -293,7 +293,36 @@ var mainMenu = function mainMenu() {
 };
 
 exports.mainMenu = mainMenu;
-},{"./resume":"resume.js","./paralex":"paralex.js"}],"testimonial.js":[function(require,module,exports) {
+},{"./resume":"resume.js","./paralex":"paralex.js"}],"testimonialData.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.testimonialData = void 0;
+var testimonialData = [{
+  name: "ericconde",
+  country: "United States",
+  text: "Excellent. Very knowledgable and expert on React.JS . Highly recommended. Very fast and with high quality. Thank you.",
+  image: "ericconde.jpeg"
+}, {
+  name: "earthgrob",
+  country: "Netherlands",
+  text: "Naeem is singlehandedly helping multiple companies deliver their MVP's. Don't look further, this is the guy.",
+  image: "earthgrob.webp"
+}, {
+  name: "ezequielmarotte",
+  country: "Argentina",
+  text: "I am very happy to work with Naeem. I believe he will be a good fit for your project. He did a lot of extra work and revisions until the project had a good fit",
+  image: "ezequielmarotte.webp"
+}, {
+  name: "akalamoyo",
+  country: "United Kingdom",
+  text: "Fantastic guy to work with. He is very responsive and knowledgeable. Also, he is very honest with his work.",
+  image: "akalamoyo.jpeg"
+}];
+exports.testimonialData = testimonialData;
+},{}],"testimonial.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -301,7 +330,26 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.testimonial = void 0;
 
+var _testimonialData2 = require("./testimonialData");
+
 var testimonial = function testimonial() {
+  //Update age
+  var ageContainer = document.getElementById("age-container");
+  var age = new Date().getFullYear() - 2000; // birth year 2000
+
+  ageContainer.innerText = age; //Testimonilas
+
+  var testimonialContainer = document.querySelector(".testimonials");
+
+  for (var i = 1; i <= _testimonialData2.testimonialData.length; i++) {
+    var _testimonialData = _testimonialData2.testimonialData[i - 1],
+        name = _testimonialData.name,
+        country = _testimonialData.country,
+        text = _testimonialData.text,
+        image = _testimonialData.image;
+    testimonialContainer.innerHTML += "\n    <div class=\"testimonial testimonial--".concat(i, "\">\n    <div class=\"testimonial__avatar\">\n      <img\n        src=\"images/testimonials/").concat(image, "\"\n        alt=\"").concat(name, "\"\n      />\n    </div>\n    <p class=\"testimonial__text\">\n      ").concat(text, "\n    </p>\n    <div class=\"testimonial__footer\">\n      <h5 class=\"testimonial__footer--name\">\n        <span>").concat(name, "</span>\n        <span>").concat(country, "</span>\n        <a\n          target=\"_blank\"\n          class=\"testimonial__footer--fiverr-link\"\n          href=\"https://www.fiverr.com/naeem215/build-a-mern-stack-web-application\"\n        >\n          <svg class=\"testimonial__footer--fiverr-icon\">\n            <use\n              xlink:href=\"icons/Mycollection-SVG-sprite.svg#fiverr\"\n            ></use>\n          </svg>\n        </a>\n      </h5>\n      <span class=\"testimonial__footer--icon\">\n        <svg class=\"testimonial--icon\">\n          <use\n            xlink:href=\"icons/Mycollection-SVG-sprite.svg#right-quote-sign\"\n          ></use>\n        </svg>\n      </span>\n    </div>\n  </div>\n    ");
+  }
+
   $(document).ready(function () {
     $(".owl-carousel").owlCarousel({
       items: 2,
@@ -324,7 +372,7 @@ var testimonial = function testimonial() {
 };
 
 exports.testimonial = testimonial;
-},{}],"../node_modules/emailjs-com/source/models/EmailJSResponseStatus.js":[function(require,module,exports) {
+},{"./testimonialData":"testimonialData.js"}],"../node_modules/emailjs-com/source/models/EmailJSResponseStatus.js":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmailJSResponseStatus = void 0;
@@ -500,6 +548,7 @@ var contactForm = function contactForm() {
   var email = document.getElementById("email");
   var subject = document.getElementById("subject");
   var message = document.getElementById("message");
+  var sendBtn = document.getElementById("send-btn");
   mapboxgl.accessToken = "pk.eyJ1IjoibmFlZW0yNTIiLCJhIjoiY2tpNG0yN3V2MDl6bzJwcGJzampuOTkyaiJ9.hecYaIXlcm7rpSO1puaPmg";
   var map = new mapboxgl.Map({
     container: "map",
@@ -531,15 +580,35 @@ var contactForm = function contactForm() {
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    if (!name.value.trim() || !email.value.trim() || subject.value.trim() || !message.value.trim()) {
-      alert("all field are required");
+    if (!name.value.trim() || !email.value.trim() || !subject.value.trim() || !message.value.trim()) {
+      alert("all fields are required");
       return;
     }
 
+    sendBtn.textContent = "Sending...";
+    sendBtn.disabled = true;
+
     _emailjsCom.default.sendForm("service_88tj3th", "template_7znvnlb", e.target, "user_GVb7xRkB8QbqPXfKvKKpz").then(function (result) {
-      console.log(result.text, result);
+      // console.log(result.text, result);
+      sendBtn.disabled = false;
+      sendBtn.textContent = "Send Message"; //reset values
+
+      name.value = "";
+      email.value = "";
+      subject.value = "";
+      message.value = ""; //Reset the focus state
+
+      for (var i = 0; i < formControl.length; i++) {
+        var formGroup = formControl[i].closest(".form__group");
+        formGroup.classList.remove("input-focus");
+      }
+
+      alert("Thanks for contacting me!");
     }, function (error) {
       console.log(error.text);
+      sendBtn.disabled = false;
+      sendBtn.textContent = "Send Message";
+      alert("Something went wrong");
     });
   });
 };
@@ -621,6 +690,8 @@ exports.home = home;
 
 var _paralex = require("./paralex");
 
+var _resume = require("./resume");
+
 var _mainMenu = require("./main-menu");
 
 var _testimonial = require("./testimonial");
@@ -647,8 +718,12 @@ window.addEventListener("mousemove", _paralex.mouseMoveParalex); //testimonial
 // skillWidth();
 //portfolio
 
-(0, _portfolio.sortable)();
-},{"./paralex":"paralex.js","./main-menu":"main-menu.js","./testimonial":"testimonial.js","./contactForm":"contactForm.js","./portfolio":"portfolio.js","./home":"home.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(0, _portfolio.sortable)(); //is now in resume page
+
+if (window.location.href.includes("resume")) {
+  (0, _resume.skillWidth)(true);
+}
+},{"./paralex":"paralex.js","./resume":"resume.js","./main-menu":"main-menu.js","./testimonial":"testimonial.js","./contactForm":"contactForm.js","./portfolio":"portfolio.js","./home":"home.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -676,7 +751,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63220" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64307" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
