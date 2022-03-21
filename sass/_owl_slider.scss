@@ -4,6 +4,9 @@
   right: 0;
   display: flex;
 }
+.owl-carousel .owl-stage-outer {
+  transform: translate3d(0, 0, 0);
+}
 .owl-carousel .owl-nav button.owl-next,
 .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel button.owl-dot {

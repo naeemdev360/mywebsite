@@ -725,8 +725,13 @@ ARROW NAVIGATION
 #about .about__do-what--text {
   margin-top: 1rem;
 }
+#about #testimonials {
+  width: 100%;
+  overflow: hidden;
+}
 #about .testimonials {
   margin-top: 6rem;
+  width: 100%;
 }
 #about .testimonials .testimonial {
   position: relative;
@@ -1327,6 +1332,10 @@ ARROW NAVIGATION
   top: -115px;
   right: 0;
   display: flex;
+}
+
+.owl-carousel .owl-stage-outer {
+  transform: translate3d(0, 0, 0);
 }
 
 .owl-carousel .owl-nav button.owl-next,

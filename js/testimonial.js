@@ -51,6 +51,8 @@ export const testimonial = () => {
     $(".owl-carousel").owlCarousel({
       items: 2,
       margin: 40,
+      stagePadding: 0,
+      loop: true,
       // responsiveClass: true,
       dots: false,
       nav: true,

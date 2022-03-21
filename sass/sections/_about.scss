@@ -58,9 +58,14 @@
       }
     }
   }
-
+  #testimonials {
+    width: 100%;
+    overflow: hidden;
+  }
   .testimonials {
     margin-top: 6rem;
+    width: 100%;
+
     .testimonial {
       position: relative;
       padding: 3rem;
