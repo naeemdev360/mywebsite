@@ -60,7 +60,7 @@ export const mainMenu = () => {
         links[0].classList.add("main-menu__link--active");
       }
     } else if (direction.classList.contains("arrows__nav--left")) {
-      if (currSection.previousElementSibling) {
+      if (currSection.previousElementSibling.classList.contains("section")) {
         currSection.previousElementSibling.classList.add("visible");
         document
           .querySelector(`a[href='#${currSection.id}']`)
